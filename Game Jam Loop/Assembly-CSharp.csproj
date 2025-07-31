@@ -48,10 +48,13 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.54f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\PointInTime.cs" />
-    <Compile Include="Assets\Scripts\TimeRewind.cs" />
+    <Compile Include="Assets\Scripts\Game Mechanic Scripts\PointInTime.cs" />
     <Compile Include="Assets\Prefabs\ModularFirstPersonController\FirstPersonController\FirstPersonController.cs" />
-    <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Weapon Scripts\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Misc Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Weapon Scripts\Deagle.cs" />
+    <Compile Include="Assets\Scripts\Game Mechanic Scripts\TimeRewind.cs" />
+    <Compile Include="Assets\Scripts\Weapon Scripts\Fists.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

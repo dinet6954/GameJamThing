@@ -379,9 +379,12 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.54f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.54f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Prefabs/ModularFirstPersonController/FirstPersonController/FirstPersonController.cs"
-"Assets/Scripts/MainMenu.cs"
-"Assets/Scripts/PointInTime.cs"
-"Assets/Scripts/TimeRewind.cs"
+"Assets/Scripts/Game Mechanic Scripts/PointInTime.cs"
+"Assets/Scripts/Game Mechanic Scripts/TimeRewind.cs"
+"Assets/Scripts/Misc Scripts/MainMenu.cs"
+"Assets/Scripts/Weapon Scripts/Deagle.cs"
+"Assets/Scripts/Weapon Scripts/Fists.cs"
+"Assets/Scripts/Weapon Scripts/Inventory.cs"
 -langversion:9.0
 /deterministic
 /optimize+
