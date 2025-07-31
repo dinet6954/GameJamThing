@@ -8,6 +8,8 @@ public class Deagle : MonoBehaviour
 
     public float Damage = 70f;
     public float Range = 1000f;
+    public float FireRate = 1f;
+    private float NextFireTime = 0f;
 
     public int MagSize = 7;
     public int Rounds = 7;
@@ -26,9 +28,11 @@ public class Deagle : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= NextFireTime)
         {
+            NextFireTime = Time.time + FireRate;
             Shoot();
+            Debug.Log("Bang!");
         }
 
         if (Input.GetKeyDown(KeyCode.R))

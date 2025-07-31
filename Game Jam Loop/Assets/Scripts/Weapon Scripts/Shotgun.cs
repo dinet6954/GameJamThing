@@ -9,6 +9,8 @@ public class Shotgun : MonoBehaviour
 
     public float Damage = 0f;
     public float Range = 50f;
+    public float FireRate = 3f;
+    private float NextFireTime = 0f;
 
     public int Pellets = 8;
 
@@ -29,8 +31,11 @@ public class Shotgun : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= NextFireTime)
         {
+
+            NextFireTime = Time.time + FireRate;
+            Debug.Log("Bang!");
             for (int i = 0; i < Pellets; i++)
             {
                 Shoot();

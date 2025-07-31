@@ -381,11 +381,14 @@
 "Assets/Prefabs/ModularFirstPersonController/FirstPersonController/FirstPersonController.cs"
 "Assets/Scripts/Game Mechanic Scripts/PointInTime.cs"
 "Assets/Scripts/Game Mechanic Scripts/TimeRewind.cs"
+"Assets/Scripts/Inventory Scripts/Inventory.cs"
+"Assets/Scripts/Inventory Scripts/PickUp.cs"
 "Assets/Scripts/Misc Scripts/MainMenu.cs"
 "Assets/Scripts/Weapon Scripts/Deagle.cs"
 "Assets/Scripts/Weapon Scripts/Fists.cs"
-"Assets/Scripts/Weapon Scripts/Inventory.cs"
+"Assets/Scripts/Weapon Scripts/Rifle.cs"
 "Assets/Scripts/Weapon Scripts/Shotgun.cs"
+"Assets/Scripts/Weapon Scripts/SMG.cs"
 -langversion:9.0
 /deterministic
 /optimize+
