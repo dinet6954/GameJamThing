@@ -484,8 +484,8 @@ Transform:
   m_GameObject: {fileID: 781534815}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3434, y: -0, z: -5.9091}
-  m_LocalScale: {x: 134.2324, y: 0.0015819, z: 108.18419}
+  m_LocalPosition: {x: -0.1434, y: 0, z: 0.4033}
+  m_LocalScale: {x: 134.62332, y: 0.0015819, z: 95.55952}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 1036436509}
   - component: {fileID: 1036436508}
   - component: {fileID: 1036436507}
-  - component: {fileID: 1036436506}
+  - component: {fileID: 1036436510}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -761,25 +761,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1800204987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1036436506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036436504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fec2d7b8521f6341914b3a4f7c26301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FPS: {fileID: 175894714}
-  Damage: 70
-  Range: 1000
-  MagSize: 7
-  Rounds: 7
-  CanShoot: 1
-  TimeRewind: {fileID: 0}
 --- !u!65 &1036436507
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -854,6 +835,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036436504}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1036436510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036436504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b253258602ed82f4580622e65d315bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FPS: {fileID: 175894714}
+  Damage: 0
+  Range: 50
+  Pellets: 8
+  MagSize: 2
+  Rounds: 2
+  CanShoot: 1
+  TimeRewind: {fileID: 1800204981}
 --- !u!1 &1121375059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1025,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: useSprintBar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: hideBarWhenFull
       value: 0
       objectReference: {fileID: 0}
@@ -1078,7 +1083,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1568311564
 Transform:
   m_ObjectHideFlags: 0
@@ -1222,7 +1227,7 @@ MonoBehaviour:
   Slot1: 0
   Fists: {fileID: 1568311563}
   Deagle: {fileID: 976206983}
-  Shotgun: {fileID: 0}
+  Shotgun: {fileID: 1036436504}
   SMG: {fileID: 0}
   Rifle: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

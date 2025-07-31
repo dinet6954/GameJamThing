@@ -41,7 +41,7 @@ public class Deagle : MonoBehaviour
     {
         if (TimeRewind.IsRewinding == true)
         {
-            //Rewind();
+            Rewind();
         }
         else
         {

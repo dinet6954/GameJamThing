@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Game Mechanic Scripts\PointInTime.cs" />
+    <Compile Include="Assets\Scripts\Weapon Scripts\Shotgun.cs" />
     <Compile Include="Assets\Prefabs\ModularFirstPersonController\FirstPersonController\FirstPersonController.cs" />
     <Compile Include="Assets\Scripts\Weapon Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\Misc Scripts\MainMenu.cs" />

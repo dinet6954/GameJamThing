@@ -385,6 +385,7 @@
 "Assets/Scripts/Weapon Scripts/Deagle.cs"
 "Assets/Scripts/Weapon Scripts/Fists.cs"
 "Assets/Scripts/Weapon Scripts/Inventory.cs"
+"Assets/Scripts/Weapon Scripts/Shotgun.cs"
 -langversion:9.0
 /deterministic
 /optimize+
