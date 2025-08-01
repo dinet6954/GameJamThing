@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class Inventory : MonoBehaviour
 {
@@ -9,10 +11,30 @@ public class Inventory : MonoBehaviour
     public GameObject Shotgun;
     public GameObject SMG;
     public GameObject Rifle;
+    List<int> Inv;
+    public TimeRewind TimeRewind;
+
+    void Start()
+    {
+        TimeRewind timeRewind = GetComponent<TimeRewind>();
+        Inv = new List<int>();
+    }
 
     void Update()
     {
         Weapons();
+    }
+
+    void FixedUpdate()
+    {
+        if (TimeRewind.IsRewinding == true)
+        {
+            Rewind();
+        }
+        else
+        {
+            Record();
+        }
     }
 
     void Weapons()
@@ -63,4 +85,23 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    void Record()
+    {
+        if (Inv.Count > Mathf.Round(5f / Time.fixedDeltaTime))
+        {
+
+        }
+
+        Inv.Insert(0, Slot1);
+    }
+    
+    void Rewind()
+    {
+        if (Inv.Count > 0)
+        {
+            Slot1 = Inv[0];
+            Inv.RemoveAt(0);
+        }
+
+    }
 }

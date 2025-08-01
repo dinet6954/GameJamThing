@@ -1,6 +1,9 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEngine.Profiling;
+using System.Collections;
 
 public class PickUp : MonoBehaviour
 {
@@ -10,10 +13,18 @@ public class PickUp : MonoBehaviour
     private bool InRange = false;
     public Inventory Inventory;
     [SerializeField] private int PickedUpItem;
+    private GameObject DroppedItem;
+    public TimeRewind TimeRewind;
+    [SerializeField] private float TimeStopTime;
+    [SerializeField] private float PickUpTime = 0;
+    private bool Counting = false;
+    private bool ReadyToDestroy = true;
+
 
     void Start()
     {
         Inventory inventory = GetComponent<Inventory>();
+        TimeRewind timeRewind = GetComponent<TimeRewind>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -23,6 +34,7 @@ public class PickUp : MonoBehaviour
             InRange = true;
             InteractText.text = "Press F to pick up Deagle";
             PickedUpItem = 1;
+            DroppedItem = other.gameObject;
         }
 
         if (other.CompareTag("DroppedShotgun"))
@@ -30,6 +42,7 @@ public class PickUp : MonoBehaviour
             InRange = true;
             InteractText.text = "Press F to pick up Shotgun";
             PickedUpItem = 2;
+            DroppedItem = other.gameObject;
         }
 
         if (other.CompareTag("DroppedSMG"))
@@ -37,6 +50,7 @@ public class PickUp : MonoBehaviour
             InRange = true;
             InteractText.text = "Press F to pick up SMG";
             PickedUpItem = 3;
+            DroppedItem = other.gameObject;
         }
 
         if (other.CompareTag("DroppedRifle"))
@@ -44,6 +58,7 @@ public class PickUp : MonoBehaviour
             InRange = true;
             InteractText.text = "Press F to pick up Rifle";
             PickedUpItem = 4;
+            DroppedItem = other.gameObject;
         }
     }
 
@@ -95,7 +110,58 @@ public class PickUp : MonoBehaviour
                         Inventory.Slot1 = 4;
                         break;
                 }
+
+                DroppedItem.SetActive(false);
+                Counting = true;
+                InRange = false;
+                InteractText.text = "";
+
             }
         }
+        
+        if (Input.GetKeyUp(KeyCode.T))
+            {
+                PickUpTime = 0;
+            }
+    }
+
+    void FixedUpdate()
+    {
+        if (TimeRewind.IsRewinding == true)
+        {
+            TimeStopTime = TimeStopTime + Time.deltaTime;
+            StartCoroutine(WaitToSpawn());
+            ReadyToDestroy = false;
+        }
+        else
+        {
+            TimeStopTime = 0;
+        }
+
+        if (Counting == true)
+        {
+            PickUpTime = PickUpTime + Time.deltaTime;
+
+            if (TimeRewind.IsRewinding == true)
+            {
+                Counting = false;
+            }
+            else
+            {
+                if (PickUpTime > 5)
+                {
+                    Destroy(DroppedItem);
+                    PickUpTime = 0;
+                    Counting = false;
+                }
+            }
+        }
+    }
+
+    IEnumerator WaitToSpawn()
+    {
+        yield return new WaitForSeconds(PickUpTime);
+
+        DroppedItem.SetActive(true);
     }
 }
