@@ -18,6 +18,7 @@ public class PickUp : MonoBehaviour
     [SerializeField] private float TimeStopTime;
     [SerializeField] private float PickUpTime = 0;
     public bool Counting = false;
+    int i;
 
 
     void Start()
@@ -114,6 +115,7 @@ public class PickUp : MonoBehaviour
                 Counting = true;
                 InRange = false;
                 InteractText.text = "";
+                i = 1;
 
             }
         }
@@ -126,41 +128,47 @@ public class PickUp : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (TimeRewind.IsRewinding == true)
+        if (i == 1)
         {
-            TimeStopTime = TimeStopTime + Time.deltaTime;
-            StartCoroutine(WaitToSpawn());
-        }
-        else
-        {
-            TimeStopTime = 0;
-        }
-
-        if (Counting == true)
-        {
-            PickUpTime = PickUpTime + Time.deltaTime;
-
             if (TimeRewind.IsRewinding == true)
             {
-                Counting = false;
+                TimeStopTime = TimeStopTime + Time.deltaTime;
+                StartCoroutine(WaitToSpawn());
             }
             else
             {
-                if (PickUpTime > 5)
-                {
-                    Destroy(DroppedItem);
-                    PickUpTime = 0;
-                    Counting = false;
-                }
+                TimeStopTime = 0;
             }
         }
+
+        if (Counting == true)
+            {
+                PickUpTime = PickUpTime + Time.deltaTime;
+
+                if (TimeRewind.IsRewinding == true)
+                {
+                    Counting = false;
+                }
+                else
+                {
+                    if (PickUpTime > 5)
+                    {
+                        Destroy(DroppedItem);
+                        PickUpTime = 0;
+                        Counting = false;
+                    }
+                }
+            }
     }
 
     IEnumerator WaitToSpawn()
     {
         yield return new WaitForSeconds(PickUpTime);
 
-        DroppedItem.SetActive(true);
-        Counting = false;
+        if (DroppedItem != null)
+        {
+            DroppedItem.SetActive(true);
+            Counting = false;
+        }
     }
 }

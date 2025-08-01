@@ -391,6 +391,7 @@
 "Assets/Scripts/Weapon Scripts/Rifle.cs"
 "Assets/Scripts/Weapon Scripts/Shotgun.cs"
 "Assets/Scripts/Weapon Scripts/SMG.cs"
+"Assets/Scripts/Weapon Scripts/ThrownGuns.cs"
 -langversion:9.0
 /deterministic
 /optimize+

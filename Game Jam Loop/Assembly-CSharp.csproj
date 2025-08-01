@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\Inventory Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\Game Mechanic Scripts\TimeRewind.cs" />
     <Compile Include="Assets\Scripts\Weapon Scripts\Fists.cs" />
+    <Compile Include="Assets\Scripts\Weapon Scripts\ThrownGuns.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

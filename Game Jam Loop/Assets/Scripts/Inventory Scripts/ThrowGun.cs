@@ -10,7 +10,7 @@ public class ThrowGun : MonoBehaviour
     public GameObject Shotgun;
     public GameObject SMG;
     public GameObject Rifle;
-    public float ThrowForce = 15f;
+    public float ThrowForce = 30f;
     public Inventory Inventory;
     public TimeRewind TimeRewind;
     public Collider Hitbox;
