@@ -109,7 +109,12 @@ public class ThrowGun : MonoBehaviour
         {
             if (other.gameObject == thrownObject)
             {
-                Destroy(other.gameObject);
+                if (other.gameObject != null)
+                {
+                    Destroy(other.gameObject);
+                    PickUp.InRange = false;
+                }
+                
             }
         }
     }

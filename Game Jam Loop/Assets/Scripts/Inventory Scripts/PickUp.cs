@@ -10,7 +10,7 @@ public class PickUp : MonoBehaviour
 
     public Collider Hitbox;
     public TextMeshProUGUI InteractText;
-    private bool InRange = false;
+    public bool InRange = false;
     public Inventory Inventory;
     [SerializeField] private int PickedUpItem;
     private GameObject DroppedItem;
@@ -119,11 +119,15 @@ public class PickUp : MonoBehaviour
 
             }
         }
+        else
+        {
+            InteractText.text = "";
+        }
         
         if (Input.GetKeyUp(KeyCode.T))
-            {
-                PickUpTime = 0;
-            }
+        {
+            PickUpTime = 0;
+        }
     }
 
     void FixedUpdate()
