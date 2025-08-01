@@ -7,7 +7,7 @@ public class Shotgun : MonoBehaviour
 {
         public Camera FPS;
 
-    public float Damage = 0f;
+    public float Damage = 20f;
     public float Range = 50f;
     public float FireRate = 3f;
     private float NextFireTime = 0f;
@@ -77,7 +77,11 @@ public class Shotgun : MonoBehaviour
 
             if (Physics.Raycast(FPS.transform.position, direction, out hit, Range))
             {
-                Debug.Log(hit.transform.name);
+                Target target = hit.transform.GetComponent<Target>();
+                if (target != null)
+                {
+                    target.TakeDamage(Damage);
+                }
             }
 
             //Quite honestly don't understand a letter of this code, we should not touch this under any circumstances.
@@ -91,13 +95,13 @@ public class Shotgun : MonoBehaviour
 
     void Reload()
     {
-        if (Rounds != 1)
+        if (Rounds != 2)
         {
             CanShoot = false;
             // Play reload animation
             CanShoot = true;
             Debug.Log("Reloaded!");
-            Rounds = 1;
+            Rounds = 2;
         }
 
     }

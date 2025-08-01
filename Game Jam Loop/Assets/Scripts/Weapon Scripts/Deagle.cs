@@ -63,6 +63,12 @@ public class Deagle : MonoBehaviour
             if (Physics.Raycast(FPS.transform.position, FPS.transform.forward, out hit, Range))
             {
                 Debug.Log(hit.transform.name);
+
+                Target target = hit.transform.GetComponent<Target>();
+                if (target != null)
+                {
+                    target.TakeDamage(Damage);
+                }
             }
         }
         else

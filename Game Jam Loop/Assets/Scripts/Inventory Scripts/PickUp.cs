@@ -17,8 +17,7 @@ public class PickUp : MonoBehaviour
     public TimeRewind TimeRewind;
     [SerializeField] private float TimeStopTime;
     [SerializeField] private float PickUpTime = 0;
-    private bool Counting = false;
-    private bool ReadyToDestroy = true;
+    public bool Counting = false;
 
 
     void Start()
@@ -131,7 +130,6 @@ public class PickUp : MonoBehaviour
         {
             TimeStopTime = TimeStopTime + Time.deltaTime;
             StartCoroutine(WaitToSpawn());
-            ReadyToDestroy = false;
         }
         else
         {
@@ -163,5 +161,6 @@ public class PickUp : MonoBehaviour
         yield return new WaitForSeconds(PickUpTime);
 
         DroppedItem.SetActive(true);
+        Counting = false;
     }
 }

@@ -6,7 +6,7 @@ public class SMG : MonoBehaviour
 {
     public Camera FPS;
 
-    public float Damage = 20f;
+    public float Damage = 15f;
     public float Range = 100f;
     public float FireRate = 0.075f;
     private float NextFireTime = 0f;
@@ -59,11 +59,16 @@ public class SMG : MonoBehaviour
             Rounds = Rounds - 1;
             RaycastHit hit;
             Debug.Log("Pew!");
-            
+
             if (Physics.Raycast(FPS.transform.position, FPS.transform.forward, out hit, Range))
             {
                 Debug.Log(hit.transform.name);
 
+                Target target = hit.transform.GetComponent<Target>();
+                if (target != null)
+                {
+                    target.TakeDamage(Damage);
+                }
             }
         }
         else
