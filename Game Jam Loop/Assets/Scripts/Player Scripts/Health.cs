@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class Health : MonoBehaviour
@@ -7,6 +8,7 @@ public class Health : MonoBehaviour
     public float HP = 100;
     [SerializeField] float countdown = 5;
     [SerializeField] GameObject HealthCounter;
+    public string CurrentScene;
     List<float> health;
 
 
@@ -35,6 +37,12 @@ public class Health : MonoBehaviour
         }
 
         HealthCounter.GetComponent<TMPro.TMP_Text>().text = HP.ToString();
+
+        if (HP <= 0)
+        {
+            Die();
+        }
+
     }
 
     void FixedUpdate()
@@ -76,5 +84,10 @@ public class Health : MonoBehaviour
             HP = health[0];
             health.RemoveAt(0);
         }
+    }
+
+    void Die()
+    { 
+        SceneManager.LoadScene("Game");
     }
 }
