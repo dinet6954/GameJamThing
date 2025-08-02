@@ -327,7 +327,7 @@ public class FirstPersonController : MonoBehaviour
         #region Jump
 
         // Gets input and calls jump method
-        if(enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
+        if(Input.GetKeyDown(jumpKey) && isGrounded)
         {
             Jump();
         }

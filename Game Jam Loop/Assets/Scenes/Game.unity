@@ -666,8 +666,8 @@ Transform:
   m_GameObject: {fileID: 728471688}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0029, y: 0.25, z: 0.09}
-  m_LocalScale: {x: 1.6825635, y: 2.1213727, z: 1.7162455}
+  m_LocalPosition: {x: -0.0029, y: 0.872, z: -1.51}
+  m_LocalScale: {x: 1.6825635, y: 1.6031426, z: 0.93800473}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1800204987}
@@ -1332,7 +1332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.17
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1368,6 +1368,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: bobSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: jumpPower
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
@@ -1379,6 +1383,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: sprintSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: enableSprint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: maxLookAngle
       value: 90
       objectReference: {fileID: 0}
@@ -1387,11 +1399,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: enableHeadBob
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: hideBarWhenFull
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: unlimitedSprint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384741, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
@@ -2023,7 +2043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1035ec3aa78ebab4d810d1273e390997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot1: 0
+  Slot1: 4
   Fists: {fileID: 1568311563}
   Deagle: {fileID: 976206983}
   Shotgun: {fileID: 1036436504}
@@ -2065,9 +2085,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FPS: {fileID: 454119823}
   Deagle: {fileID: 106669193106778709, guid: 095f7a08273e8fa469da0114c8fbed72, type: 3}
-  Shotgun: {fileID: 3155843005390977399, guid: 84961a53df8029b43b1698ed00270e81, type: 3}
+  Shotgun: {fileID: 5547383136442853830, guid: 5e8f13771edf4ad47a75f43de02541da, type: 3}
   SMG: {fileID: 2321666459376823787, guid: a4c563ecc6ee8c244a17fe914ecb38e0, type: 3}
-  Rifle: {fileID: 1888448058314224426, guid: 19d307f8781e9564a97e697b13eb4d54, type: 3}
+  Rifle: {fileID: 8224583103157296420, guid: 59732bd578c95ce4994691508ff295e4, type: 3}
   ThrowForce: 30
   Inventory: {fileID: 1800204988}
   TimeRewind: {fileID: 1800204981}
