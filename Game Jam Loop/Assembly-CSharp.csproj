@@ -52,16 +52,18 @@
     <Compile Include="Assets\Scripts\Weapon Scripts\Shotgun.cs" />
     <Compile Include="Assets\Scripts\Inventory Scripts\ThrowGun.cs" />
     <Compile Include="Assets\Scripts\Inventory Scripts\PickUp.cs" />
+    <Compile Include="Assets\Scripts\Game Mechanic Scripts\Enemy\EnemyAI.cs" />
     <Compile Include="Assets\Prefabs\ModularFirstPersonController\FirstPersonController\FirstPersonController.cs" />
+    <Compile Include="Assets\Scripts\Game Mechanic Scripts\CheckAirborne.cs" />
     <Compile Include="Assets\Scripts\Misc Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Weapon Scripts\Deagle.cs" />
-    <Compile Include="Assets\Scripts\Game Mechanic Scripts\Target.cs" />
     <Compile Include="Assets\Scripts\Weapon Scripts\SMG.cs" />
     <Compile Include="Assets\Scripts\Weapon Scripts\Rifle.cs" />
     <Compile Include="Assets\Scripts\Inventory Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\Game Mechanic Scripts\TimeRewind.cs" />
     <Compile Include="Assets\Scripts\Weapon Scripts\Fists.cs" />
     <Compile Include="Assets\Scripts\Weapon Scripts\ThrownGuns.cs" />
+    <Compile Include="Assets\Scripts\Game Mechanic Scripts\Enemy\Target.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -1053,8 +1055,20 @@
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Multiplayer.Center.Common">
       <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Center.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Updater">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
@@ -1067,6 +1081,10 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">

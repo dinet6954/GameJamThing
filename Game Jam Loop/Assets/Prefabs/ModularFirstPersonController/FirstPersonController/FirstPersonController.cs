@@ -84,7 +84,7 @@ public class FirstPersonController : MonoBehaviour
 
     // Internal Variables
     private CanvasGroup sprintBarCG;
-    private bool isSprinting = false;
+    public bool isSprinting = false;
     private float sprintRemaining;
     private float sprintBarWidth;
     private float sprintBarHeight;
@@ -100,7 +100,7 @@ public class FirstPersonController : MonoBehaviour
     public float jumpPower = 5f;
 
     // Internal Variables
-    private bool isGrounded = false;
+    public bool isGrounded = false;
 
     #endregion
 
