@@ -17,13 +17,20 @@ public class ThrowGun : MonoBehaviour
     public PickUp PickUp;
     private bool Throwcount = false;
     GameObject thrownObject;
+    [SerializeField] GameObject Ammowarn;
     Rigidbody rb;
+    public Deagle deag;
+    public Shotgun shot;
+    public SMG smg;
 
     void Start()
     {
         Inventory inventory = GetComponent<Inventory>();
         TimeRewind timeRewind = GetComponent<TimeRewind>();
         PickUp pickUp = GetComponent<PickUp>();
+        Deagle deag = GetComponent<Deagle>();
+        Shotgun shot = GetComponent<Shotgun>();
+        SMG smg = GetComponent<SMG>();
     }
 
     void Update()
@@ -34,6 +41,15 @@ public class ThrowGun : MonoBehaviour
             {
                 Throw();
             }
+        }
+
+        if (deag.Rounds == 0 || shot.Rounds == 0 || smg.Rounds == 0)
+        {
+            Ammowarn.SetActive(true);
+        }
+        else
+        {
+            Ammowarn.SetActive(false);
         }
     }
 
@@ -47,6 +63,7 @@ public class ThrowGun : MonoBehaviour
             case 1:
                 thrownObject = Instantiate(Deagle, FPS.position, FPS.rotation);
                 rb = thrownObject.GetComponent<Rigidbody>();
+                deag.Rounds = 7;
 
                 if (rb != null)
                 {
@@ -61,6 +78,7 @@ public class ThrowGun : MonoBehaviour
             case 2:
                 thrownObject = Instantiate(Shotgun, FPS.position, FPS.rotation);
                 rb = thrownObject.GetComponent<Rigidbody>();
+                shot.Rounds = 2;
 
                 if (rb != null)
                 {
@@ -75,6 +93,7 @@ public class ThrowGun : MonoBehaviour
             case 3:
                 thrownObject = Instantiate(SMG, FPS.position, FPS.rotation);
                 rb = thrownObject.GetComponent<Rigidbody>();
+                smg.Rounds = 30;
 
                 if (rb != null)
                 {

@@ -18,6 +18,8 @@ public class EnemyAI : MonoBehaviour
 
     //Attack behaviour
     public float TimeBetweenAttacks;
+    public float Damage = 70;
+    public int EquippedGun;
     bool HasBeenAttacked;
 
     //States
@@ -27,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     public Target tgt;
     public TimeRewind Rwnd;
     public CheckAirborne Air;
+    public Health heal;
     [SerializeField] float pause;
     [SerializeField] bool Countdown = true;
     int i = 0;
@@ -40,29 +43,75 @@ public class EnemyAI : MonoBehaviour
         tgt = GetComponent<Target>();
         Rwnd = Player.GetComponent<TimeRewind>();
         Air = Player.GetComponent<CheckAirborne>();
+        heal = Player.GetComponent<Health>();
+        SetDamage();
     }
 
     void Update()
     {
-        PlayerInSightRange = Physics.CheckSphere(transform.position, SightRange, WhatIsPlayer);
-        PlayerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, WhatIsPlayer);
 
-        if (PlayerInSightRange != true && PlayerInAttackRange != true)
+        bool inSightSphere = Physics.CheckSphere(transform.position, SightRange, WhatIsPlayer);
+        bool inAttackSphere = Physics.CheckSphere(transform.position, AttackRange, WhatIsPlayer);
+
+        PlayerInSightRange = false;
+        PlayerInAttackRange = false;
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Damage = 0;
+        }
+
+        if (Input.GetKeyUp(KeyCode.T))
+        {
+            SetDamage();
+        }
+
+        if (inSightSphere)
+            {
+                if (HasLineOfSightToPlayer(SightRange))
+                {
+                    PlayerInSightRange = true;
+                }
+            }
+
+        if (inAttackSphere)
+        {
+            if (HasLineOfSightToPlayer(AttackRange))
+            {
+                PlayerInAttackRange = true;
+            }
+        }
+
+        if (!PlayerInSightRange && !PlayerInAttackRange)
         {
             Patrolling();
         }
 
-        if (PlayerInSightRange == true && PlayerInAttackRange != true)
+        else if (PlayerInSightRange && !PlayerInAttackRange)
         {
             ChasePlayer();
         }
-
-        if (PlayerInSightRange == true && PlayerInAttackRange == true)
+        else if (PlayerInSightRange && PlayerInAttackRange)
         {
             Attack();
         }
 
-        
+        bool HasLineOfSightToPlayer(float range)
+        {
+            Vector3 origin = transform.position + Vector3.up * 1.6f;
+            Vector3 direction = (Player.position + Vector3.up * 0.9f - origin);
+            float distance = Mathf.Min(direction.magnitude, range);
+            direction.Normalize();
+
+            int mask = WhatIsGround | WhatIsPlayer;
+
+            if (Physics.Raycast(origin, direction, out RaycastHit hit, distance, mask))
+            {
+                return hit.transform == Player;
+            }
+            return false;
+        }
+
     }
 
     void FixedUpdate()
@@ -105,7 +154,7 @@ public class EnemyAI : MonoBehaviour
                     i = 1;
                     pause = Random.Range(1, 5);
                     Countdown = false;
-                }   
+                }
             }
         }
     }
@@ -147,6 +196,7 @@ public class EnemyAI : MonoBehaviour
                 if (Hitchance <= 20)
                 {
                     Debug.Log("Hit 20% chance shot");
+                    heal.TakeDamage(Damage);
                 }
                 else
                 {
@@ -159,6 +209,7 @@ public class EnemyAI : MonoBehaviour
                 if (Hitchance <= 45)
                 {
                     Debug.Log("Hit 45% chance shot");
+                    heal.TakeDamage(Damage);
                 }
                 else
                 {
@@ -171,6 +222,7 @@ public class EnemyAI : MonoBehaviour
                 if (Hitchance <= 70)
                 {
                     Debug.Log("Hit a 70% chance shot");
+                    heal.TakeDamage(Damage);
                 }
                 else
                 {
@@ -196,11 +248,22 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, SightRange);
     }
 
-    IEnumerator PauseCount()
+    void SetDamage()
     {
-        yield return new WaitForSeconds(5);
-        Countdown = false;
-        WalkPointSet = false;
-        Debug.Log("Executed pause coroutine");
+        switch (EquippedGun)
+        {
+            case 1:
+                Damage = 40;
+                TimeBetweenAttacks = 2;
+                break;
+            case 2:
+                Damage = 70;
+                TimeBetweenAttacks = 4;
+                break;
+            case 3:
+                Damage = 10;
+                TimeBetweenAttacks = 0.5f;
+                break;
+        }
     }
 }

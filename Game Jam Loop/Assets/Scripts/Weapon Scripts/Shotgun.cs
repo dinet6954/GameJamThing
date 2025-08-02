@@ -20,6 +20,7 @@ public class Shotgun : MonoBehaviour
     public bool CanShoot = true;
 
     public TimeRewind TimeRewind;
+    [SerializeField] GameObject AmmoCounter;
 
     List<int> rounds;
 
@@ -40,14 +41,11 @@ public class Shotgun : MonoBehaviour
             {
                 Shoot();
             }
-            
+
             Rounds = Rounds - 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-            {
-                Reload();
-            }
+        AmmoCounter.GetComponent<TMPro.TMP_Text>().text = Rounds + "/2";
     }
 
     void FixedUpdate()

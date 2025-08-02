@@ -9,17 +9,25 @@ public class Target : MonoBehaviour
 {
     public float Health = 100;
     public GameObject Enemy;
+    public Transform SpawnPoint;
     public TimeRewind TimeRewind;
+    public EnemyAI EAI;
     [SerializeField] private float TimeStopCount;
     [SerializeField] private float TimeSinceDeath;
     public bool Dead;
+    public GameObject Deagle;
+    public GameObject Shotgun;
+    public GameObject SMG;
     List<float> health;
     public GameObject Player;
+    private GameObject DroppedGun;
+    
 
     void Awake()
     {
         Player = GameObject.Find("FirstPersonController");
         TimeRewind timeRewind = Player.GetComponent<TimeRewind>();
+        EnemyAI EAI = GetComponent<EnemyAI>(); 
         health = new List<float>();
     }
 
@@ -35,10 +43,21 @@ public class Target : MonoBehaviour
     void TempDie()
     {
         Enemy.GetComponent<Renderer>().enabled = false;
-        //Disable AI too, otherwise this will make an invisible unkillable threat
-        Enemy.GetComponent<EnemyAI>().enabled = false;
         Enemy.GetComponent<NavMeshAgent>().enabled = false;
         Dead = true;
+
+        switch (EAI.EquippedGun)
+        {
+            case 1:
+                DroppedGun = Instantiate(Deagle, SpawnPoint.position, SpawnPoint.rotation);
+                break;
+            case 2:
+                DroppedGun = Instantiate(Shotgun, SpawnPoint.position, SpawnPoint.rotation);
+                break;
+            case 3:
+                DroppedGun = Instantiate(SMG, SpawnPoint.position, SpawnPoint.rotation);
+                break;
+        }
     }
 
     void FixedUpdate()
@@ -78,13 +97,14 @@ public class Target : MonoBehaviour
         //Re-Enable AI
         Dead = false;
         TimeSinceDeath = 0;
+        Destroy(DroppedGun);
     }
 
     void Record()
     {
         if (health.Count > Mathf.Round(5f / Time.fixedDeltaTime))
         {
-
+            health.RemoveAt(health.Count - 1);
         }
 
         health.Insert(0, Health);

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.Profiling;
 
@@ -13,6 +14,7 @@ public class Inventory : MonoBehaviour
     public GameObject Rifle;
     List<int> Inv;
     public TimeRewind TimeRewind;
+    [SerializeField] GameObject AmmoWarn;
 
     void Start()
     {
@@ -46,6 +48,7 @@ public class Inventory : MonoBehaviour
             Shotgun.gameObject.SetActive(false);
             SMG.gameObject.SetActive(false);
             Rifle.gameObject.SetActive(false);
+            AmmoWarn.SetActive(true);
         }
 
         if (Slot1 == 1)

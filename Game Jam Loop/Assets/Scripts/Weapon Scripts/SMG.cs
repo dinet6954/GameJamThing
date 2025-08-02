@@ -17,6 +17,7 @@ public class SMG : MonoBehaviour
     public bool CanShoot = true;
 
     public TimeRewind TimeRewind;
+    [SerializeField] GameObject AmmoCounter;
 
     List<int> rounds;
 
@@ -34,10 +35,7 @@ public class SMG : MonoBehaviour
             NextFireTime = Time.time + FireRate;
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reload();
-        }
+        AmmoCounter.GetComponent<TMPro.TMP_Text>().text = Rounds + "/30";
     }
 
     void FixedUpdate()

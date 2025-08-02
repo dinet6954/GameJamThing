@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Fists : MonoBehaviour
 {
-public Camera FPS;
+    public Camera FPS;
+    [SerializeField] GameObject AmmoCounter;
 
     public float Damage = 100f;
     public float Range = 2f;
@@ -13,6 +14,8 @@ public Camera FPS;
         {
             Shoot();
         }
+
+        AmmoCounter.GetComponent<TMPro.TMP_Text>().text = "Fists/100";
     }
 
     void Shoot()
