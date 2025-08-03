@@ -13,9 +13,12 @@ public class Deagle : MonoBehaviour
 
     public int MagSize = 7;
     public int Rounds = 7;
-
+    public Transform Deag;
+    public GameObject MFlash;
+    public GameObject BulletHole;
+    public AudioSource Gunshot;
+    public AudioClip Shot;
     public bool CanShoot = true;
-
     public TimeRewind TimeRewind;
     [SerializeField] GameObject AmmoCounter;
 
@@ -67,7 +70,12 @@ public class Deagle : MonoBehaviour
                 {
                     target.TakeDamage(Damage);
                 }
+
+                Instantiate(BulletHole, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
             }
+
+            Instantiate(MFlash, Deag.position, Quaternion.identity);
+            Gunshot.PlayOneShot(Shot);
         }
         else
         {

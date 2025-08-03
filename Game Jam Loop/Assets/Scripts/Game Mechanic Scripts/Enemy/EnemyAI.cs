@@ -248,7 +248,7 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, SightRange);
     }
 
-    void SetDamage()
+    public void SetDamage()
     {
         switch (EquippedGun)
         {

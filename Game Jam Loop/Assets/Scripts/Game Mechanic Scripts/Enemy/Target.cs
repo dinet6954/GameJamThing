@@ -21,6 +21,8 @@ public class Target : MonoBehaviour
     List<float> health;
     public GameObject Player;
     private GameObject DroppedGun;
+    bool dropped;
+    bool once = true;
     
 
     void Awake()
@@ -45,19 +47,31 @@ public class Target : MonoBehaviour
         Enemy.GetComponent<Renderer>().enabled = false;
         Enemy.GetComponent<NavMeshAgent>().enabled = false;
         Dead = true;
+        dropped = true;
+        EAI.Damage = 0;
+    }
 
-        switch (EAI.EquippedGun)
+    void Update()
+    {
+        if (dropped)
         {
-            case 1:
-                DroppedGun = Instantiate(Deagle, SpawnPoint.position, SpawnPoint.rotation);
-                break;
-            case 2:
-                DroppedGun = Instantiate(Shotgun, SpawnPoint.position, SpawnPoint.rotation);
-                break;
-            case 3:
-                DroppedGun = Instantiate(SMG, SpawnPoint.position, SpawnPoint.rotation);
-                break;
-        }
+            if (once == true)
+            {
+                switch (EAI.EquippedGun)
+                {
+                    case 1:
+                        DroppedGun = Instantiate(Deagle, SpawnPoint.position, SpawnPoint.rotation);
+                        break;
+                    case 2:
+                        DroppedGun = Instantiate(Shotgun, SpawnPoint.position, SpawnPoint.rotation);
+                        break;
+                    case 3:
+                        DroppedGun = Instantiate(SMG, SpawnPoint.position, SpawnPoint.rotation);
+                        break;
+                }
+                once = false;
+            }
+        }   
     }
 
     void FixedUpdate()
@@ -98,6 +112,7 @@ public class Target : MonoBehaviour
         Dead = false;
         TimeSinceDeath = 0;
         Destroy(DroppedGun);
+        EAI.SetDamage();
     }
 
     void Record()

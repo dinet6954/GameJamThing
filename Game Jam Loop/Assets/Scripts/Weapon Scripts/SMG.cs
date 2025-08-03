@@ -13,9 +13,12 @@ public class SMG : MonoBehaviour
 
     public int MagSize = 30;
     public int Rounds = 30;
-
+    public Transform smg;
+    public GameObject mFlash;
+    public GameObject BulletHole;
+    public AudioSource Gunshot;
+    public AudioClip Shot;
     public bool CanShoot = true;
-
     public TimeRewind TimeRewind;
     [SerializeField] GameObject AmmoCounter;
 
@@ -56,7 +59,6 @@ public class SMG : MonoBehaviour
         {
             Rounds = Rounds - 1;
             RaycastHit hit;
-            Debug.Log("Pew!");
 
             if (Physics.Raycast(FPS.transform.position, FPS.transform.forward, out hit, Range))
             {
@@ -67,7 +69,12 @@ public class SMG : MonoBehaviour
                 {
                     target.TakeDamage(Damage);
                 }
+
+                Instantiate(BulletHole, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
             }
+
+            Instantiate(mFlash, smg.position, Quaternion.identity);
+            Gunshot.PlayOneShot(Shot);
         }
         else
         {

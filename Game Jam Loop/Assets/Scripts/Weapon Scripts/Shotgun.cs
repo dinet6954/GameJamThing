@@ -16,9 +16,12 @@ public class Shotgun : MonoBehaviour
 
     public int MagSize = 2; 
     public int Rounds = 2;
-
+    public Transform shootgun;
+    public GameObject Mflash;
+    public GameObject BulletHole;
+    public AudioSource Gunshot;
+    public AudioClip Shot;
     public bool CanShoot = true;
-
     public TimeRewind TimeRewind;
     [SerializeField] GameObject AmmoCounter;
 
@@ -80,7 +83,12 @@ public class Shotgun : MonoBehaviour
                 {
                     target.TakeDamage(Damage);
                 }
+
+                Instantiate(BulletHole, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
             }
+
+            Instantiate(Mflash, shootgun.position, Quaternion.identity);
+            Gunshot.PlayOneShot(Shot);
 
             //Quite honestly don't understand a letter of this code, we should not touch this under any circumstances.
         }
