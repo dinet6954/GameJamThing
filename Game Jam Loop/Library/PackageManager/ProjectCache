@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638897901303495376
-    m_Hash: 3266993122
+      ticks: 638897933616312085
+    m_Hash: 2437675055
   m_LockFileStatus:
     m_FilePath: C:/Users/Dinet/Documents/GitHub/GameJamThing/Game Jam Loop/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638897901486834057
-    m_Hash: 1840202354
+      ticks: 638897933616322109
+    m_Hash: 2117825717
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -1384,7 +1384,7 @@ m_ResolvedPackages:
       violations: []
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638792046006940000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.settings-manager@2.1/manual/index.html
