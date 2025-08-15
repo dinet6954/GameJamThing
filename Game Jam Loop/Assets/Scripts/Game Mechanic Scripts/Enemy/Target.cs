@@ -23,14 +23,15 @@ public class Target : MonoBehaviour
     private GameObject DroppedGun;
     bool dropped;
     bool once = true;
-    
+
 
     void Awake()
     {
         Player = GameObject.Find("FirstPersonController");
         TimeRewind timeRewind = Player.GetComponent<TimeRewind>();
-        EnemyAI EAI = GetComponent<EnemyAI>(); 
+        EnemyAI EAI = GetComponent<EnemyAI>();
         health = new List<float>();
+        Enemy = this.gameObject;
     }
 
     public void TakeDamage(float amount)

@@ -4,9 +4,13 @@ public class Fists : MonoBehaviour
 {
     public Camera FPS;
     [SerializeField] GameObject AmmoCounter;
+    [SerializeField] GameObject AmmoWarn;
 
     public float Damage = 100f;
     public float Range = 2f;
+    public AudioSource Fist;
+    public AudioClip Swing;
+    public AudioClip Hit;
 
     void Update()
     {
@@ -16,12 +20,15 @@ public class Fists : MonoBehaviour
         }
 
         AmmoCounter.GetComponent<TMPro.TMP_Text>().text = "Fists/100";
+        AmmoWarn.SetActive(false);
     }
 
     void Shoot()
     {
 
         RaycastHit hit;
+        Fist.PlayOneShot(Swing);
+
 
         if (Physics.Raycast(FPS.transform.position, FPS.transform.forward, out hit, Range))
         {
@@ -31,6 +38,7 @@ public class Fists : MonoBehaviour
             if (target != null)
             {
                 target.TakeDamage(Damage);
+                Fist.PlayOneShot(Hit);
             }
         }
 

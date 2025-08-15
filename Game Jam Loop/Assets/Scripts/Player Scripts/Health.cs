@@ -88,6 +88,6 @@ public class Health : MonoBehaviour
 
     void Die()
     { 
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(CurrentScene);
     }
 }
