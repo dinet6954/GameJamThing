@@ -10,12 +10,14 @@ public class Health : MonoBehaviour
     [SerializeField] GameObject HealthCounter;
     public string CurrentScene;
     List<float> health;
+    List<int> CountDown;
 
 
     void Start()
     {
         Rwd = GetComponent<TimeRewind>();
         health = new List<float>();
+        CountDown = new List<int>();
     }
 
     void Update()
@@ -61,20 +63,21 @@ public class Health : MonoBehaviour
     {
         countdown = 5;
         HP -= amount;
-        if (HP <= 0f)
-        {
-
-        }
     }
 
     void Record()
     {
         if (health.Count > Mathf.Round(5f / Time.fixedDeltaTime))
         {
-
+            health.RemoveAt(health.Count - 1);
         }
 
         health.Insert(0, HP);
+
+        if (CountDown.Count > Mathf.Round(5f / Time.fixedDeltaTime))
+        {
+            CountDown.RemoveAt(CountDown.Count - 1);
+        }
     }
 
     void Rewind()
@@ -84,6 +87,9 @@ public class Health : MonoBehaviour
             HP = health[0];
             health.RemoveAt(0);
         }
+
+        countdown = CountDown[0];
+        CountDown.RemoveAt(0);
     }
 
     void Die()
