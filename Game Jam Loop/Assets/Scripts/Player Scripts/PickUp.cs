@@ -15,6 +15,9 @@ public class PickUp : MonoBehaviour
     [SerializeField] private int PickedUpItem;
     private GameObject DroppedItem;
     public TimeRewind TimeRewind;
+    public Deagle Deag;
+    public Shotgun Shot;
+    public SMG smg;
     [SerializeField] private float TimeStopTime;
     [SerializeField] private float PickUpTime = 0;
     public bool Counting = false;
@@ -68,6 +71,7 @@ public class PickUp : MonoBehaviour
         {
             InRange = false;
             InteractText.text = "";
+
         }
 
         if (other.CompareTag("DroppedShotgun"))
@@ -99,6 +103,7 @@ public class PickUp : MonoBehaviour
                 {
                     case 1:
                         Inventory.Slot1 = 1;
+                        
                         break;
                     case 2:
                         Inventory.Slot1 = 2;

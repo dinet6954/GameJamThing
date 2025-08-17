@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8394660234931892152}
   m_Layer: 0
   m_Name: Thrown SMG
-  m_TagString: DroppedSMG
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

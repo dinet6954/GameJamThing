@@ -67,12 +67,12 @@ public class EnemyAI : MonoBehaviour
         }
 
         if (inSightSphere)
+        {
+            if (HasLineOfSightToPlayer(SightRange))
             {
-                if (HasLineOfSightToPlayer(SightRange))
-                {
-                    PlayerInSightRange = true;
-                }
+                PlayerInSightRange = true;
             }
+        }
 
         if (inAttackSphere)
         {
@@ -111,7 +111,6 @@ public class EnemyAI : MonoBehaviour
             }
             return false;
         }
-
     }
 
     void FixedUpdate()
